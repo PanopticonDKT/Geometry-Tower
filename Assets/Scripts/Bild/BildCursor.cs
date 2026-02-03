@@ -3,6 +3,7 @@ using UnityEngine;
 public class BildCursor : MonoBehaviour
 {
     public LayerMask layer;
+    private float rotationSpeed = 100f;
 
     private void Start()
     {
@@ -13,7 +14,12 @@ public class BildCursor : MonoBehaviour
     {
         CursorBinding();
         if (Input.GetMouseButtonDown(0))
-            Destroy(gameObject.GetComponent<BildCursor>());  
+            Destroy(gameObject.GetComponent<BildCursor>()); 
+
+        if (Input.GetKey(KeyCode.C))
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.Z))
+            transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
     }
 
     private void CursorBinding(){
