@@ -127,3 +127,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
+  layerPoligon:
+    serializedVersion: 2
+    m_Bits: 128

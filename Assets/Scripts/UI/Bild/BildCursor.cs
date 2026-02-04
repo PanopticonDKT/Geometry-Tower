@@ -3,6 +3,7 @@ using UnityEngine;
 public class BildCursor : MonoBehaviour
 {
     public LayerMask layer;
+    public LayerMask layerPoligon;
     private float rotationSpeed = 100f;
 
     private void Start()
@@ -13,8 +14,12 @@ public class BildCursor : MonoBehaviour
     private void Update()
     {
         CursorBinding();
-        if (Input.GetMouseButtonDown(0))
-            Destroy(gameObject.GetComponent<BildCursor>()); 
+        if (Input.GetMouseButtonDown(0)){
+            Ray rayPoligon = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitPoligon;
+            if (Physics.Raycast(rayPoligon, out hitPoligon, 1000f, layerPoligon))
+                Destroy(gameObject.GetComponent<BildCursor>()); 
+        }
 
         if (Input.GetKey(KeyCode.C))
             transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
@@ -29,7 +34,7 @@ public class BildCursor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1000f, layer))
         {
             Vector3 newPos = hit.point;
-            newPos.y += 1f;  // ������� �� 1 ������� �����
+            newPos.y += 1f;  
             transform.position = newPos;
         }
     }
