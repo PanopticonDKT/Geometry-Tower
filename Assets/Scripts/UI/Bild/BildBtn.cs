@@ -4,6 +4,7 @@ using System.Collections;
 public class BildBtn : MonoBehaviour
 {
     public GameObject Bild;
+    public int price;
     [Header("Retraction")]
     bool a = true;
     float speed = 0.1f;
@@ -13,7 +14,10 @@ public class BildBtn : MonoBehaviour
 
     public void BildVdBtn()
     {
-        Instantiate(Bild, Vector3.zero, Quaternion.identity);
+        if(Manager.Coins > price){
+            Instantiate(Bild, Vector3.zero, Quaternion.identity);
+            Manager.Coins -= price;
+        }
     }
     public void Retraction()
     {
