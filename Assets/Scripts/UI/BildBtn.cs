@@ -7,7 +7,6 @@ public class BildBtn : MonoBehaviour
     public int price;
     [Header("Retraction")]
     bool a = true;
-    float speed = 0.1f;
     public float time = 0.1f;
     public GameObject Pnl;
 
